@@ -29,7 +29,7 @@ console.log(item_3);
 let item_4;
 
 //11. Присвоить переменной item_4 строку "Hello World"
-item_4 = "Hello World";
+item_4 = 'Hello World';
 
 //12. Вывести в консоль item_4.
 console.log(item_4);
@@ -58,8 +58,8 @@ item_6 = 15;
 //20. Присвоить переменной item_6_type тип переменной item_6
 item_6_type = typeof item_6;
 
-//21. Вывести в консоль тип данных item_6 в виде ——  “item_6 == ”  item_6,  “item_6_type == ”  item_6_type ——  
-console.log("item_6 == " + item_6, + "item_6_type == " +  item_6_type);
+//21. Вывести в консоль тип данных item_6 в виде ——  “item_6 == ”  item_6,  “item_6_type == ”  item_6_type ——
+console.log('item_6 == ' + item_6 + ', item_6_type == ' + item_6_type);
 
 //22. Создать переменную item_7 и в ней преобразовать item_6 в String.
 let item_7 = String(item_6);
@@ -70,6 +70,5 @@ let item_7_type;
 //24. Присвоить переменной item_7_type тип переменной item_7
 item_7_type = typeof item_7;
 
-//25. Вывести в консоль тип данных item_7 в виде ——  “item_7 == ”  item_7,  “item_7_type == ”  item_7_type ——  
-console.log("item_7 == " + item_7, + "item_7_type == " + item_7_type);
-
+//25. Вывести в консоль тип данных item_7 в виде ——  “item_7 == ”  item_7,  “item_7_type == ”  item_7_type ——
+console.log('item_7 == ' + item_7 + ', item_7_type == ' + item_7_type);
