@@ -4,3 +4,8 @@
 n + nn + nnn, где n не перемножаются, а конкатенируются
 
 */
+
+let n = Math.floor(Math.random() * 9) + 1;
+console.log(n);
+
+console.log(n + parseInt(String(n) + n) + parseInt(String(n) + n + n));
