@@ -7,8 +7,14 @@
   Ожидается: { 1: 1, 2: 2, 3: 1, 4: 3, 5: 1 }
 */
 
+const numbers = [1, 2, 2, 3, 4, 4, 4, 5];
+
 function countOccurrences(arr) {
-  // ваш код
+  let object = {};
+  arr.forEach((key) => {
+    object[key] = arr.filter((el) => el === key).length;
+  });
+  return object;
 }
 
 export { countOccurrences };
