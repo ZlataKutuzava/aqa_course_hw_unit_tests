@@ -13,9 +13,9 @@ class Employee {
 
   set firstName(value) {
     if (typeof value !== 'string') {
-      return;
+      throw new Error('Invalid input');
     }
-    this._firstName = value;
+    return (this._firstName = value);
   }
 
   get lastName() {
@@ -24,9 +24,9 @@ class Employee {
 
   set lastName(value) {
     if (typeof value !== 'string') {
-      return;
+      throw new Error('Invalid input');
     }
-    this._lastName = value;
+    return (this._lastName = value);
   }
 
   get profession() {
@@ -35,9 +35,9 @@ class Employee {
 
   set profession(value) {
     if (typeof value !== 'string') {
-      return;
+      throw new Error('Invalid input');
     }
-    this._profession = value;
+    return (this._profession = value);
   }
 
   get salary() {
@@ -92,7 +92,7 @@ class Company {
 
   addEmployee(employee) {
     if (!(employee instanceof Employee)) throw new Error('Object is not the instance of Employee class');
-    this.#employees.push(employee);
+    return this.#employees.push(employee);
   }
 
   getEmployees() {

@@ -12,10 +12,10 @@ class Employee {
   }
 
   set firstName(value) {
-    if (typeof value !== 'string') {
-      return;
+    if (typeof value !== 'string' || value.length < 2 || value.length > 50 || !value.match(/^[A-Za-z]+$/)) {
+      throw new Error('Invalid First name');
     }
-    this._firstName = value;
+    return (this._firstName = value);
   }
 
   get lastName() {
@@ -23,10 +23,10 @@ class Employee {
   }
 
   set lastName(value) {
-    if (typeof value !== 'string') {
-      return;
+    if (typeof value !== 'string' || value.length < 2 || value.length > 50 || !value.match(/^[A-Za-z]+$/)) {
+      throw new Error('Invalid Last name');
     }
-    this._lastName = value;
+    return (this._lastName = value);
   }
 
   get profession() {
@@ -34,10 +34,10 @@ class Employee {
   }
 
   set profession(value) {
-    if (typeof value !== 'string') {
-      return;
+    if (typeof value !== 'string' || value.length == 0 || !value.trim().length || !value.match(/^[a-zA-Z ]+$/)) {
+      throw new Error('Invalid profession');
     }
-    this._profession = value;
+    return (this._profession = value);
   }
 
   get salary() {
@@ -45,7 +45,7 @@ class Employee {
   }
 
   set salary(value) {
-    if (typeof value !== 'number' || value <= 0) throw new Error('Invalid salary');
+    if (typeof value !== 'number' || value <= 0 || value >= 10000 || isNaN(value)) throw new Error('Invalid salary');
     return (this.#salary = value);
   }
 
@@ -92,7 +92,7 @@ class Company {
 
   addEmployee(employee) {
     if (!(employee instanceof Employee)) throw new Error('Object is not the instance of Employee class');
-    this.#employees.push(employee);
+    return this.#employees.push(employee);
   }
 
   getEmployees() {
@@ -104,12 +104,25 @@ class Company {
   }
 
   findEmployeeByName(firstName) {
-     this.#employees.find(employee =>  {
-      if (employee.firstName === firstName) {
-      return employee;
-     }
-     else throw new Error ("Employee is not found");
-     } ) 
+    if (typeof firstName !== 'string') throw new Error('Invalid input');
+    let searchResult = this.getEmployees().find((employee) => employee.firstName === firstName);
+    if (!searchResult) throw new Error('The employee is not found');
+    return searchResult;
+  }
+
+  #getEmployeeIndex(firstName) {
+    return this.#employees.findIndex((employee) => employee.firstName === firstName);
+  }
+
+  removeEmployee(firstName) {
+    if (this.#getEmployeeIndex(firstName) == -1) {
+      throw new Error('The employee is not found');
+    }
+    return this.#employees.splice(this.#getEmployeeIndex(firstName), 1);
+  }
+
+  getTotalSalary() {
+    return this.#employees.reduce((totalSalary, employee) => (totalSalary += employee.salary), 0);
   }
 }
 export { Employee, Company };
