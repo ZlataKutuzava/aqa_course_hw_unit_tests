@@ -63,9 +63,13 @@ promiseAll(arrayOfPromises);
 
 async function promiseAllSettled(incomingArrayOfPromises) {
   try {
-    Promise.allSettled(incomingArrayOfPromises).then((results) => results.forEach((result) => console.log(result)));
-  } catch (error) {
-    console.error(`Task 8 - Error: ${error}`);
+    await Promise.allSettled(incomingArrayOfPromises).then((results) =>
+      results.forEach(({ status, value, reason }) =>
+        console.log(`Fulfilled with the status ${status} with value ${value}`),
+      ),
+    );
+  } catch ({ status, value, reason }) {
+    console.error(`Rejected with the status ${status} and reason ${reason}`);
   }
 }
 promiseAllSettled(arrayOfPromises);
