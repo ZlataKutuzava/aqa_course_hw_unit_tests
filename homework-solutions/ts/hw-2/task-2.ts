@@ -6,12 +6,12 @@
 // Пример:
 // map([1,2,3,4,5], callback) => [0,2,6,12,20]
 
-let numbers = [1, 2, 3, 4, 5];
+const numbers = [1, 2, 3, 4, 5];
 
 type mapCallback<T, U> = (element: T, index: number, array: T[]) => U;
 
 function map<T, U>(array: T[], callback: mapCallback<T, U>): U[] {
-  let resultArray: U[] = [];
+  const resultArray: U[] = [];
   for (let i = 0; i < array.length; i++) {
     resultArray.push(callback(array[i], i, array));
   }
