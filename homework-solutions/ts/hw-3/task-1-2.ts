@@ -24,8 +24,8 @@ interface IVehicle {
 
 abstract class Vehicle implements IVehicle {
   constructor(
-    public make: string,
-    public model: string,
+    protected make: string,
+    protected model: string,
   ) {}
   start(): string {
     return `The vehicle ${this.make} ${this.model} is starting.`;
@@ -35,9 +35,9 @@ abstract class Vehicle implements IVehicle {
 
 class Car extends Vehicle {
   constructor(
-    public make: string,
-    public model: string,
-    public year: number,
+    make: string,
+    model: string,
+    protected year: number,
   ) {
     super(make, model);
   }
